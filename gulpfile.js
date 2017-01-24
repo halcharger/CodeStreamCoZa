@@ -95,6 +95,10 @@ gulp.task('package', ['default'], function() {
     gulp.src(['vendor/magnific-popup/jquery.magnific-popup.min.js']).pipe(gulp.dest('dist/vendor/magnific-popup'))
     gulp.src(['js/creative.min.js']).pipe(gulp.dest('dist/js'))
 
+    //FONTS
+    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.woff']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
+    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.woff2']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
+    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.ttf']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
 
     //IMAGES
     gulp.src(['img/header.jpg']).pipe(gulp.dest('dist/img'))
