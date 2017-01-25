@@ -102,6 +102,7 @@ gulp.task('package', ['default'], function() {
 
     //IMAGES
     gulp.src(['img/header.jpg']).pipe(gulp.dest('dist/img'))
+    gulp.src(['img/logo.png']).pipe(gulp.dest('dist/img'))
     gulp.src(['img/portfolio/thumbnails/1.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
     gulp.src(['img/portfolio/thumbnails/2.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
     gulp.src(['img/portfolio/thumbnails/3.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
