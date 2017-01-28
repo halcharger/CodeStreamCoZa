@@ -101,7 +101,9 @@ gulp.task('package', ['default'], function() {
     gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.ttf']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
 
     //IMAGES
+    gulp.src(['favicon.ico']).pipe(gulp.dest('dist'))
     gulp.src(['img/header.jpg']).pipe(gulp.dest('dist/img'))
+    gulp.src(['img/favicon-32x32.png']).pipe(gulp.dest('dist/img'))
     gulp.src(['img/logo.png']).pipe(gulp.dest('dist/img'))
     gulp.src(['img/portfolio/thumbnails/1.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
     gulp.src(['img/portfolio/thumbnails/2.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
