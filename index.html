@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-success btn-send" value="Send message">
+                                    <button class="btn btn-success btn-send"><i class="fa fa-envelope-o"></i> Send Message</button>
                                 </div>
                             </div>
                         </div>
@@ -215,8 +215,8 @@
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <script type="">
-        $("#contact-form").submit(function(e) { e.preventDefault(); console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload: ' + payload); var $form
-        = $(this); $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload).then(function() { alert("Thank you! Your message has been sent."); }); });
+        function sendMessage(){ $("#contact-form").submit(function(e) { e.preventDefault(); console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload:
+        ' + payload); $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload).then(function() { alert("Thank you! Your message has been sent."); }); }); }
     </script>
 
     <!-- Bootstrap Core JavaScript -->
