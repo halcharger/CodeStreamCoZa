@@ -215,8 +215,8 @@
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <script type="">
-        function sendMessage(){ $("#contact-form").submit(function(e) { e.preventDefault(); console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload:
-        ' + payload); $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload).then(function() { alert("Thank you! Your message has been sent."); }); }); }
+        function sendMessage(){ console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload:' + payload); $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==',
+        payload).then(function() { alert("Thank you! Your message has been sent."); }); }
     </script>
 
     <!-- Bootstrap Core JavaScript -->
