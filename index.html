@@ -178,30 +178,36 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <div class="messages"></div>
 
-                        <div class="controls">
+                    <div class="controls">
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input id="fromEmail" type="email" name="fromEmail" class="form-control" placeholder="Please enter your email (required)" required="required" data-error="Valid email is required.">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea id="message" name="message" class="form-control" placeholder="Your message (required)" rows="4" required="required" data-error="Please,leave us a message."></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="btn btn-success btn-send" onclick="sendMessage()"><i class="fa fa-envelope-o"></i> Send Message</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input id="fromEmail" type="email" name="fromEmail" class="form-control" placeholder="Please enter your email (required)" required="required" data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea id="message" name="message" class="form-control" placeholder="Your message (required)" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-success btn-send" onclick="sendMessage()"><i class="fa fa-envelope-o"></i> Send Message</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="message" class="messages" style="display:none;">
+                                your message was sent.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -210,9 +216,15 @@
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
-    <script type="">
-        function sendMessage(){ console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload:' + payload); $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==',
-        payload).then(function() { alert("Thank you! Your message has been sent."); }); }
+    <script>
+        function sendMessage() {
+            console.log('starting email send...');
+            var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}';
+            console.log('email payload:' + payload);
+            $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload).then(function() {
+                $('#message').show();
+            });
+        }
     </script>
 
     <!-- Bootstrap Core JavaScript -->
