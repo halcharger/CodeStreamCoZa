@@ -203,7 +203,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div id="feedback" class="messages" style="display:none;"></div>
+                            <div id="feedback" class="messages"></div>
                         </div>
                     </div>
                 </div>
@@ -217,18 +217,18 @@
     <script>
         function sendMessage() {
             console.log('starting email send...');
+            $('#feedback').empty();
             $('#sendBtn i').addClass('fa-spin');
             var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}';
             console.log('email payload:' + payload);
             $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload)
                 .done(function() {
-                    $('#feedback').empty().append('your message was sent successfully.');
+                    $('#feedback').append('your message was sent successfully.');
                 })
                 .fail(function() {
-                    $('#feedback').empty().append('there seems to be a problem sending your message :-(');
+                    $('#feedback').append('there seems to be a problem sending your message :-(');
                 })
                 .always(function() {
-                    $('#feedback').show();
                     $('#sendBtn i').removeClass('fa-spin');
                 });
         }
