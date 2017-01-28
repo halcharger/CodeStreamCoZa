@@ -215,7 +215,8 @@
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <script type="">
-        $("#contact-form").submit(function(e) { e.preventDefault(); var $form = $(this); $.post($form.attr("action"), $form.serialize()).then(function() { alert("Thank you! Your message has been sent."); }); });
+        console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":" + $('#message').val() + "}'; console.log('email payload: ' + payload); $("#contact-form").submit(function(e) { e.preventDefault(); var $form = $(this); $.post($form.attr("action"), payload).then(function()
+        { alert("Thank you! Your message has been sent."); }); });
     </script>
 
     <!-- Bootstrap Core JavaScript -->
