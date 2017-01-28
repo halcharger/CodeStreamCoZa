@@ -218,7 +218,8 @@
         function sendMessage() {
             console.log('starting email send...');
             $('#feedback').empty();
-            $('#sendBtn i').addClass('fa-circle-notch-o fa-spin');
+            $('#sendBtn i').removeClass('fa-envelope-o');
+            $('#sendBtn i').addClass('fa-circle-o-notch fa-spin');
             var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}';
             console.log('email payload:' + payload);
             $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload)
@@ -229,7 +230,8 @@
                     $('#feedback').append('there seems to be a problem sending your message :-(');
                 })
                 .always(function() {
-                    $('#sendBtn i').removeClass('fa-circle-notch-o fa-spin');
+                    $('#sendBtn i').removeClass('fa-circle-o-notch fa-spin');
+                    $('#sendBtn i').addClass('fa-envelope-o');
                 });
         }
     </script>
