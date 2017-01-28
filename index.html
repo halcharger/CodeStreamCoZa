@@ -215,7 +215,7 @@
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <script type="">
-        console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload: ' + payload); $("#contact-form").submit(function(e) { e.preventDefault(); var $form
+         $("#contact-form").submit(function(e) { e.preventDefault(); console.log('starting email send...'); var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}'; console.log('email payload: ' + payload); var $form
         = $(this); $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload).then(function() { alert("Thank you! Your message has been sent."); }); });
     </script>
 
