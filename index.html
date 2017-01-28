@@ -199,11 +199,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-success btn-send" onclick="sendMessage()"><i class="fa fa-envelope-o"></i> Send Message</button>
+                                <button id="sendBtn" class="btn btn-success btn-send" onclick="sendMessage()"><i class="fa fa-envelope-o"></i> Send Message</button>
                             </div>
                         </div>
                         <div class="row">
-                            <div id="message" class="messages" style="display:none;">
+                            <div id="feedback" class="messages" style="display:none;">
                                 your message was sent.
                             </div>
                         </div>
@@ -219,10 +219,12 @@
     <script>
         function sendMessage() {
             console.log('starting email send...');
+            $('#sendBtn i').addClass('fa-spin');
             var payload = '{"fromEmail":"' + $('#fromEmail').val() + '", "message":"' + $('#message').val() + '"}';
             console.log('email payload:' + payload);
             $.post('https://codestream-sendemail.azurewebsites.net/api/HttpTriggerCSharp1?code=aExZ7RdiTHa3raKF1DabT6Q4cxnTxazbJOacdY7/GMECvxBHkgy6NA==', payload).then(function() {
-                $('#message').show();
+                $('#feedback').show();
+                $('#sendBtn i').removeClass('fa-spin');
             });
         }
     </script>
