@@ -170,6 +170,9 @@ header .header-content .header-content-inner h1 {
   margin-bottom: 0;
   font-size: 80px;
 }
+header .header-content .header-content-inner h1 span {
+  font-weight: 100;
+}
 header .header-content .header-content-inner hr {
   margin: 30px auto;
 }
