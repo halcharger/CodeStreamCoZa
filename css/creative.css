@@ -72,7 +72,11 @@ aside {
 .navbar-default .navbar-header .navbar-brand {
   color: #96B5AC;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 900;
+  font-size: 30px;
+}
+.navbar-default .navbar-header .navbar-brand span {
+  font-weight: 100;
 }
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
@@ -130,7 +134,7 @@ aside {
   }
   .navbar-default.affix .navbar-header .navbar-brand {
     color: #96B5AC;
-    font-size: 14px;
+    font-size: 30px;
   }
   .navbar-default.affix .navbar-header .navbar-brand:hover,
   .navbar-default.affix .navbar-header .navbar-brand:focus {
