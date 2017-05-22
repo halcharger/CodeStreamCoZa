@@ -9,6 +9,15 @@ To begin using this template, choose one of the following options to get started
 * Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-creative.git`
 * Fork the repo
 
+## Deployment Procedure
+
+To make changes to the CodeStream public website:
+* Clone the repo: ` https://github.com/halcharger/CodeStreamCoZa`
+* Make the changes, if you add any new files then be sure to update the **gulpfile.js** and add the file(s) under the **package** task.
+* Commit the changes to the repo, this will start the automatic process of packaging and deploying the source to the live hosted enviroment.
+* The changes will reflec on the live website once the source has been updated.
+* The website is hosted with https://www.netlify.com/
+
 ## Bugs and Issues
 
 Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-creative/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/creative/).
