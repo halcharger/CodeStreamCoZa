@@ -80,58 +80,67 @@ gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
 
 gulp.task('package', ['default'], function() {
     //HTML
-    gulp.src(['index.html']).pipe(gulp.dest('dist'))
+    gulp.src(['index.html']).pipe(gulp.dest('dist'));
 
     //CSS
-    gulp.src(['css/creative.min.css']).pipe(gulp.dest('dist/css'))
-    gulp.src(['vendor/bootstrap/css/bootstrap.min.css']).pipe(gulp.dest('dist/vendor/bootstrap/css'))
-    gulp.src(['vendor/font-awesome/css/font-awesome.min.css']).pipe(gulp.dest('dist/vendor/font-awesome/css'))
-    gulp.src(['vendor/magnific-popup/magnific-popup.css']).pipe(gulp.dest('dist/vendor/magnific-popup'))
+    gulp.src(['css/creative.min.css']).pipe(gulp.dest('dist/css'));
+    gulp.src(['vendor/bootstrap/css/bootstrap.min.css']).pipe(gulp.dest('dist/vendor/bootstrap/css'));
+    gulp.src(['vendor/font-awesome/css/font-awesome.min.css']).pipe(gulp.dest('dist/vendor/font-awesome/css'));
+    gulp.src(['vendor/magnific-popup/magnific-popup.css']).pipe(gulp.dest('dist/vendor/magnific-popup'));
 
     //JS
-    gulp.src(['vendor/jquery/jquery.min.js']).pipe(gulp.dest('dist/vendor/jquery'))
-    gulp.src(['vendor/bootstrap/js/bootstrap.min.js']).pipe(gulp.dest('dist/vendor/bootstrap/js'))
-    gulp.src(['vendor/scrollreveal/scrollreveal.min.js']).pipe(gulp.dest('dist/vendor/scrollreveal'))
-    gulp.src(['vendor/magnific-popup/jquery.magnific-popup.min.js']).pipe(gulp.dest('dist/vendor/magnific-popup'))
+    gulp.src(['vendor/jquery/jquery.min.js']).pipe(gulp.dest('dist/vendor/jquery'));
+    gulp.src(['vendor/bootstrap/js/bootstrap.min.js']).pipe(gulp.dest('dist/vendor/bootstrap/js'));
+    gulp.src(['vendor/scrollreveal/scrollreveal.min.js']).pipe(gulp.dest('dist/vendor/scrollreveal'));
+    gulp.src(['vendor/magnific-popup/jquery.magnific-popup.min.js']).pipe(gulp.dest('dist/vendor/magnific-popup'));
     gulp.src(['js/creative.min.js']).pipe(gulp.dest('dist/js'))
 
     //FONTS
-    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.woff']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
-    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.woff2']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
-    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.ttf']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'))
+    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.woff']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
+    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.woff2']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
+    gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.ttf']).pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
 
     //IMAGES
-    gulp.src(['img/header.jpg']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/logo.png']).pipe(gulp.dest('dist/img'))	
-	gulp.src(['img/CodeStream-05.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/codestream-logo.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/portfolio/thumbnails/1.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
-    gulp.src(['img/portfolio/thumbnails/2.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
-    gulp.src(['img/portfolio/thumbnails/3.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
-    gulp.src(['img/portfolio/thumbnails/4.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
-    gulp.src(['img/portfolio/thumbnails/5.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
-    gulp.src(['img/portfolio/thumbnails/6.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'))
+    gulp.src(['img/header.jpg']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/logo.png']).pipe(gulp.dest('dist/img'));
+	gulp.src(['img/CodeStream-05.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/codestream-logo.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/portfolio/thumbnails/1.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/2.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/3.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/4.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/5.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/6.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+
+    gulp.src(['img/portfolio/c-sharp.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/angularjs.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/azure.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/docker.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/ionic.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/mongodb.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/ms-sql.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/nodejs.jpg']).pipe(gulp.dest('dist/img/portfolio'));
 
     //FAVICONS
-    gulp.src(['favicon.ico']).pipe(gulp.dest('dist'))
-    gulp.src(['img/apple-touch-icon-57x57.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-114x114.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-72x72.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-144x144.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-60x60.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-120x120.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-76x76.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/apple-touch-icon-152x152.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/favicon-196x196.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/favicon-96x96.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/favicon-32x32.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/favicon-16x16.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/favicon-128.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/mstile-144x144.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/mstile-70x70.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/mstile-150x150.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/mstile-310x150.png']).pipe(gulp.dest('dist/img'))
-    gulp.src(['img/mstile-310x310.png']).pipe(gulp.dest('dist/img'))
+    gulp.src(['favicon.ico']).pipe(gulp.dest('dist'));
+    gulp.src(['img/apple-touch-icon-57x57.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-114x114.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-72x72.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-144x144.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-60x60.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-120x120.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-76x76.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/apple-touch-icon-152x152.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/favicon-196x196.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/favicon-96x96.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/favicon-32x32.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/favicon-16x16.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/favicon-128.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/mstile-144x144.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/mstile-70x70.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/mstile-150x150.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/mstile-310x150.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/mstile-310x310.png']).pipe(gulp.dest('dist/img'));
 
 });
 
