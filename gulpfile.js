@@ -112,14 +112,14 @@ gulp.task('package', ['default'], function() {
     gulp.src(['img/portfolio/thumbnails/5.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
     gulp.src(['img/portfolio/thumbnails/6.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
 
-    gulp.src(['img/portfolio/c-sharp.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/angularjs.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/azure.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/docker.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/ionic.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/mongodb.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/ms-sql.jpg']).pipe(gulp.dest('dist/img/portfolio'));
-    gulp.src(['img/portfolio/nodejs.jpg']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/c-sharp.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/angularjs.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/azure.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/docker.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/ionic.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/mongodb.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/ms-sql.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/nodejs.png']).pipe(gulp.dest('dist/img/portfolio'));
 
     //FAVICONS
     gulp.src(['favicon.ico']).pipe(gulp.dest('dist'));
