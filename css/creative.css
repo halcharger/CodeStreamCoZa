@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap - Creative v3.3.7+1 (http://startbootstrap.com/template-overviews/creative)
- * Copyright 2013-2017 Start Bootstrap
+ * Copyright 2013-2018 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 html,
@@ -218,11 +218,11 @@ header .header-content .header-content-inner p {
 }
 .service-box {
   max-width: 400px;
-  margin: 50px auto 0;
+  margin: auto 0;
 }
 @media (min-width: 992px) {
   .service-box {
-    margin: 20px auto 0;
+    margin: auto 0;
   }
 }
 .service-box p {
@@ -419,4 +419,15 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #222222;
+}
+.skills-img {
+  width: 200px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.skills-img img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

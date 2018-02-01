@@ -9,6 +9,11 @@ To begin using this template, choose one of the following options to get started
 * Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-creative.git`
 * Fork the repo
 
+## To run locally
+
+run: `npm install`
+run: `gulp dev`
+
 ## Deployment Procedure
 
 To make changes to the CodeStream public website:

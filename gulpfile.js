@@ -139,7 +139,7 @@ gulp.task('package', ['default'], function() {
 gulp.task('browserSync', function() {
     browserSync.init({
         server: {
-            baseDir: ''
+            baseDir: './'
         },
     })
 })
