@@ -82,6 +82,10 @@ gulp.task('package', ['default'], function() {
     //HTML
     gulp.src(['index.html']).pipe(gulp.dest('dist'));
 
+    //PDFs
+    gulp.src(['allenfirth.pdf']).pipe(gulp.dest('dist'));
+    gulp.src(['robbieribeiro.pdf']).pipe(gulp.dest('dist'));
+
     //CSS
     gulp.src(['css/creative.min.css']).pipe(gulp.dest('dist/css'));
     gulp.src(['vendor/bootstrap/css/bootstrap.min.css']).pipe(gulp.dest('dist/vendor/bootstrap/css'));
