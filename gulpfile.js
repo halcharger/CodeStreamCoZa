@@ -124,6 +124,7 @@ gulp.task('package', ['default'], function() {
     gulp.src(['img/portfolio/mongodb.png']).pipe(gulp.dest('dist/img/portfolio'));
     gulp.src(['img/portfolio/ms-sql.png']).pipe(gulp.dest('dist/img/portfolio'));
     gulp.src(['img/portfolio/nodejs.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/linked-in.png']).pipe(gulp.dest('dist/img/portfolio'));
 
     //FAVICONS
     gulp.src(['favicon.ico']).pipe(gulp.dest('dist'));
