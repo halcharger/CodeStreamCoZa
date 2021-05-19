@@ -21,7 +21,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'copy dist folder to artifacts staging folder'
       inputs:
-        sourceFolder: /dist/codestreamcoza2
+        sourceFolder: dist/codestreamcoza2
         contents: '**'
         targetFolder: $(Build.ArtifactStagingDirectory)
         cleanTargetFolder: true
