@@ -42,6 +42,9 @@ stages:
     pool:
       vmImage: "Windows-2019"
 
+    variables:
+      - group: website-variables
+
     environment: PROD
     strategy:
       runOnce:
@@ -88,9 +91,9 @@ stages:
               ContainerName: '$web'
               AdditionalArgumentsForBlobCopy: '--content-type "application/javascript"'
 
-          - task: staff0rd.tfx-cloudflare-purge.custom-build-release-task.tfx-cloudflare-purge@1
-            displayName: 'Purge Cloudflare cache'
-            inputs:
-              username: 'allen@codestream.co.za'
-              apikey: '$(CloudflareGlobalApiKey)'
-              zonename: '$(CloudflareZoneName)'
+#          - task: staff0rd.tfx-cloudflare-purge.custom-build-release-task.tfx-cloudflare-purge@1
+#            displayName: 'Purge Cloudflare cache'
+#            inputs:
+#              username: 'allen@codestream.co.za'
+#              apikey: '$(CloudflareGlobalApiKey)'
+#              zonename: '$(CloudflareZoneName)'
