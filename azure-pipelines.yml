@@ -3,11 +3,6 @@ trigger:
     include:
     - master
 
-variables:
-  - working
-  - name: ReleaseDate
-    value: $(Get-Date -Format yyyy-MM-dd hh:mm)
-
 stages:
 - stage: CI
   jobs:
