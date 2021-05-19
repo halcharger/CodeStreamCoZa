@@ -28,7 +28,7 @@ gulp.task('less', function() {
 });
 
 // Minify compiled CSS
-gulp.task('minify-css', ['less'], function() {
+gulp.task('minify-css', gulp.series('less', function() {
     return gulp.src('css/creative.css')
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
@@ -36,7 +36,7 @@ gulp.task('minify-css', ['less'], function() {
         .pipe(browserSync.reload({
             stream: true
         }))
-});
+}));
 
 // Minify JS
 gulp.task('minify-js', function() {
@@ -76,9 +76,9 @@ gulp.task('copy', function() {
 })
 
 // Run everything
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', gulp.series('less', 'minify-css', 'minify-js', 'copy'));
 
-gulp.task('package', ['default'], function() {
+gulp.task('package', gulp.series('default'), function() {
     //HTML
     gulp.src(['index.html']).pipe(gulp.dest('dist'));
 
@@ -109,12 +109,18 @@ gulp.task('package', ['default'], function() {
     gulp.src(['img/logo.png']).pipe(gulp.dest('dist/img'));
 	gulp.src(['img/CodeStream-05.png']).pipe(gulp.dest('dist/img'));
     gulp.src(['img/codestream-logo.png']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/af-linkedin.jpg']).pipe(gulp.dest('dist/img'));
+    gulp.src(['img/rr-linkedin.jpg']).pipe(gulp.dest('dist/img'));
+
     gulp.src(['img/portfolio/thumbnails/1.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
     gulp.src(['img/portfolio/thumbnails/2.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
     gulp.src(['img/portfolio/thumbnails/3.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
     gulp.src(['img/portfolio/thumbnails/4.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
     gulp.src(['img/portfolio/thumbnails/5.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
     gulp.src(['img/portfolio/thumbnails/6.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/10.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/11.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
+    gulp.src(['img/portfolio/thumbnails/12.jpg']).pipe(gulp.dest('dist/img/portfolio/thumbnails'));
 
     gulp.src(['img/portfolio/c-sharp.png']).pipe(gulp.dest('dist/img/portfolio'));
     gulp.src(['img/portfolio/angularjs.png']).pipe(gulp.dest('dist/img/portfolio'));
@@ -127,6 +133,7 @@ gulp.task('package', ['default'], function() {
     gulp.src(['img/portfolio/linked-in.png']).pipe(gulp.dest('dist/img/portfolio'));
     gulp.src(['img/portfolio/azuredatafactory.png']).pipe(gulp.dest('dist/img/portfolio'));
     gulp.src(['img/portfolio/xamarin.png']).pipe(gulp.dest('dist/img/portfolio'));
+    gulp.src(['img/portfolio/azuredevops.png']).pipe(gulp.dest('dist/img/portfolio'));
 
     //FAVICONS
     gulp.src(['favicon.ico']).pipe(gulp.dest('dist'));
@@ -161,11 +168,11 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
+gulp.task('dev', gulp.series('browserSync', 'less', 'minify-css', 'minify-js', function() {
     gulp.watch('less/*.less', ['less']);
     gulp.watch('css/*.css', ['minify-css']);
     gulp.watch('js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('*.html', browserSync.reload);
     gulp.watch('js/**/*.js', browserSync.reload);
-});
+}));

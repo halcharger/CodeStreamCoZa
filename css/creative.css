@@ -55,6 +55,11 @@ p {
 section {
   padding: 100px 0;
 }
+
+.section-whoweare {
+  padding-bottom: 100px !important;
+}
+
 aside {
   padding: 50px 0;
 }
@@ -216,12 +221,12 @@ header .header-content .header-content-inner p {
 .section-heading {
   margin-top: 0;
 }
-.service-box {
+.service-box .service-box-2 {
   max-width: 400px;
   margin: auto 0;
 }
 @media (min-width: 992px) {
-  .service-box {
+  .service-box .service-box-2{
     margin: auto 0;
   }
 }
@@ -229,6 +234,7 @@ header .header-content .header-content-inner p {
   text-align: justify;
   margin-bottom: 0;
 }
+
 .portfolio-box {
   position: relative;
   display: block;
@@ -421,8 +427,7 @@ body {
   webkit-tap-highlight-color: #222222;
 }
 .skills-img {
-  width: 200px;
-  height: 100px;
+  width: 225px;
   margin-left: auto;
   margin-right: auto;
 }
