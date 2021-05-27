@@ -27,8 +27,19 @@
  }
  a:hover,
  a:focus {
-   color: #78a094;
+   color: #e2f8f1;
  }
+ a.externalLinks {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  color: #ecf0ef;
+  font-size: 16px;
+}
+a:hover.externalLinks,
+a:focus.externalLinks {
+  color: #f2f8f6;
+}
  h1,
  h2,
  h3,
