@@ -8,7 +8,7 @@ import imgAngular from '@/images/portfolio/angular.png'
 import imgCSharp from '@/images/portfolio/c-sharp.png'
 import imgSqlServer from '@/images/portfolio/ms-sql.png'
 import imgNodeJs from '@/images/portfolio/nodejs.png'
-import imgReact from '@/images/portfolio/react-logo.jpg'
+import imgReact from '@/images/portfolio/react-logo.png'
 import imgSignalr from '@/images/portfolio/signalr.png'
 import imgTypescript from '@/images/portfolio/typescript.png'
 import imgDocker from '@/images/portfolio/docker.png'
@@ -16,16 +16,16 @@ import imgCosmos from '@/images/portfolio/cosmosdb.png'
 
 const images = [
   imgAzure,
-  imgDevOps, 
+  imgDevOps,
   imgAngular,
   imgCSharp,
-  imgSqlServer, 
-  imgNodeJs, 
-  imgReact, 
-  imgSignalr, 
-  imgTypescript, 
+  imgSqlServer,
+  imgNodeJs,
+  imgReact,
+  imgSignalr,
+  imgTypescript,
   imgDocker,
-  imgCosmos
+  imgCosmos,
 ]
 
 export function SecondaryFeatures() {
@@ -33,7 +33,7 @@ export function SecondaryFeatures() {
     <section
       id="secondary-features"
       aria-label="Features for building a portfolio"
-      className="py-20 sm:py-32 border-t"
+      className="border-t py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
@@ -41,7 +41,8 @@ export function SecondaryFeatures() {
             What we specialise in
           </h2>
           <p className="mt-2 text-lg text-gray-600">
-            We have a breadth of experience in Microsoft Azure and associated technologies and platform features.
+            We have a breadth of experience in Microsoft Azure and associated
+            technologies and platform features.
           </p>
         </div>
         <ul
@@ -51,7 +52,7 @@ export function SecondaryFeatures() {
           {images.map((image, idx) => (
             <li
               key={idx}
-              className="rounded-2xl border border-gray-200 p-8 grid place-items-center"
+              className="grid place-items-center rounded-2xl border border-gray-200 p-8"
             >
               <Image src={image} width="200" height="100" alt="tech"></Image>
             </li>
@@ -61,4 +62,3 @@ export function SecondaryFeatures() {
     </section>
   )
 }
-

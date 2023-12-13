@@ -1,85 +1,62 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
-import {
-  useInView,
-} from 'framer-motion'
+import { useInView } from 'framer-motion'
 
 import { Container } from '@/components/Container'
 
 const reviews = [
   {
     title: 'The SPAR Group',
-    body: 'We developed the SPAR store and vendor master data system as well as building their DataLake reporting warehouse and migrating it to Azure',
+    body: 'CodeStream developed the SPAR store and vendor master data system as well as building their DataLake reporting warehouse and migrating it to Azure',
     author: 'Angular, C# REST Api & DevOps',
-    rating: 5,
   },
   {
     title: 'Chelsea Football Club (London, UK).',
     body: 'Live player data analysis tool built on Azure to ingest live streaming data from players.',
-    author: 'Azure SQL Server, C# Azure Functions, Azure Event Hub & Azure DevOps',
-    rating: 5,
+    author:
+      'Azure SQL Server, C# Azure Functions, Azure Event Hub & Azure DevOps',
   },
   {
     title: 'Anglo American (London, UK)',
     body: 'Live intraday exposure reporting tool.',
     author: 'Angular, C#, SignalR, Azure',
-    rating: 5,
   },
   {
     title: 'SMEasy (South Africa)',
-    body: 'Small busines sonline accounting packge.',
+    body: 'Small business online accounting packge.',
     author: 'Angular, C# Asp.NET, Azure SQL Server & Azure DevOps',
-    rating: 5,
   },
   {
     title: 'Clifford Chance (London, UK)',
     body: 'Partner remuneration systems used to manage partner remuneration in different tax regions.',
     author: 'Angular, C#, Asp.NET Core, Azure SQL',
-    rating: 5,
   },
   {
     title: 'DigitalTwin (South Africa)',
     body: 'Live asset tracking IoT system using bluetooth light energy devices.',
     author: 'Angular, C#, Asp.NET Core, SignalR, Azure, SQL Server, IoT',
-    rating: 5,
   },
   {
     title: 'CashRewards (Australia)',
-    body: 'Customer Coupon MAnagement Application.',
+    body: 'Customer Coupon Management Application.',
     author: 'Angular',
-    rating: 5,
   },
   {
     title: 'Uniper (Germany)',
-    body: 'Power PRicing Agreement model valuation management system visualising and managing large sets of timeseries data.',
+    body: 'Power Pricing Agreement model valuation management system visualising and managing large sets of timeseries data.',
     author: 'Angular, SignalR, C#, Asp.NET Core, Azure CosmosDb, Azure DevOps',
-    rating: 5,
+  },
+  {
+    title: 'London Stock Exchange (UK)',
+    body: 'US Municipal Bonds information and reseach system for the global financial sector.',
+    author: 'Web Components (lit.dev), GraphQl, AWS Lambdas',
+  },
+  {
+    title: 'Fluenty IT (South Africa)',
+    body: 'Lisa is a groundbreaking lead to lease platform that will power your portfolio with automated marketing tools, deal management, tenant relationship tools, and deep analytics.',
+    author: 'React, SignalR, C#, Asp.NET Core, AWS, PostgreSQL',
   },
 ]
-
-function StarIcon(props) {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  )
-}
-
-function StarRating({ rating }) {
-  return (
-    <div className="flex">
-      {[...Array(5).keys()].map((index) => (
-        <StarIcon
-          key={index}
-          className={clsx(
-            'h-5 w-5',
-            rating > index ? 'fill-cyan-500' : 'fill-gray-300'
-          )}
-        />
-      ))}
-    </div>
-  )
-}
 
 function Review({ title, body, author, rating, className, ...props }) {
   let animationDelay = useMemo(() => {

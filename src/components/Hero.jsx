@@ -11,6 +11,7 @@ import logoUniper from '@/images/logos/uniper.png'
 import logoSpar from '@/images/logos/SPAR.jpg'
 import logoChelsea from '@/images/logos/chelsea.webp'
 import logoClifford from '@/images/logos/cliffordchance.png'
+import logoLSEG from '@/images/logos/londonstockexchange_logo.svg'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -226,26 +227,30 @@ function Chart({
   )
 }
 
-
 export function Hero() {
   return (
-    <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36 h-screen">
+    <div className="h-screen overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-12 lg:gap-y-20">
-          <div className="relative z-10 mx-auto min-w-2xl lg:col-span-10 lg:max-w-none lg:pt-6 xl:col-span-6">
+          <div className="min-w-2xl relative z-10 mx-auto lg:col-span-10 lg:max-w-none lg:pt-6 xl:col-span-6">
             <div className="flex items-center text-gray-800">
               <Logo width="100" height="100" className="h-10 w-auto" />
               <div className="ml-4">
-                <p className="text-base text-4xl lg:text-7xl text-gray-600">CodeStream</p>
-                <p className="mt-1 lg:ml-3 lg:text-2xl text-gray-500">Dream, Design, Develop, Deliver</p>
+                <p className="text-base text-4xl text-gray-600 lg:text-7xl">
+                  CodeStream
+                </p>
+                <p className="mt-1 text-gray-500 lg:ml-3 lg:text-2xl">
+                  Dream, Design, Develop, Deliver
+                </p>
               </div>
             </div>
 
-            <p className="mt-6 text-gray-600 text-center lg:text-left">
-              azure specialists, custom software development, systems architecture.
+            <p className="mt-6 text-center text-gray-600 lg:text-left">
+              azure specialists, custom software development, systems
+              architecture.
             </p>
           </div>
-          <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6 lg:ml-20">
+          <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 lg:ml-20 xl:col-span-6">
             <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
           </div>
           <div className="relative -mt-4 lg:col-span-12 lg:mt-0 xl:col-span-12">
@@ -254,21 +259,21 @@ export function Hero() {
             </p>
             <ul
               role="list"
-              className="mx-auto mt-8 flex flex-col md:flex-row lg:justify-start gap-x-10 gap-y-8 lg:mx-0"
+              className="mx-auto mt-8 flex flex-col gap-x-10 gap-y-8 md:flex-row lg:mx-0 lg:justify-start"
             >
               {[
                 ['AngloAmerican', logoAngloAmerican, 300, 100],
                 ['Uniper', logoUniper, 100, 100],
                 ['SPAR', logoSpar, 250, 100],
                 ['Chelsea', logoChelsea, 75, 75],
-                ['CliffordChance', logoClifford, 200, 100]
+                ['CliffordChance', logoClifford, 200, 100],
+                ['LSEG', logoLSEG, 200, 85],
               ].map(([name, logo, width, height]) => (
                 <li key={name}>
                   <Image src={logo} alt={name} width={width} height={height} />
                 </li>
               ))}
             </ul>
-
           </div>
         </div>
       </Container>
