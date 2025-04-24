@@ -22,7 +22,7 @@ const features = [
   {
     name: 'Dream',
     description:
-      'Truly disruptive businesses dream first. Don&apos;t just keep up with the competition, dream about what it will take to leap-frog the norm and become the leader in your industry.',
+      "Truly disruptive businesses dream first. Don't just keep up with the competition, dream about what it will take to leap-frog the norm and become the leader in your industry.",
     icon: DeviceUserIcon,
     screen: InviteScreen,
   },
@@ -43,7 +43,7 @@ const features = [
   {
     name: 'Deliver',
     description:
-      'Don&apos;t wait six months to find out your project is behind schedule. We deliver on regular short intervals to keep things transparent and ourselves accountable.',
+      "Don't wait six months to find out your project is behind schedule. We deliver on regular short intervals to keep things transparent and ourselves accountable.",
     icon: DeviceUserIcon,
     screen: InviteScreen,
   },
@@ -361,33 +361,30 @@ function FeaturesDesktop() {
   return (
     <div className="grid grid-cols-12 items-center gap-8 lg:gap-16 xl:gap-24">
       {features.map((feature) => (
-          <div
-            key={feature.name}
-            className="relative col-span-12 md:col-span-6 space-y-6 rounded-2xl transition-colors border border-gray-300"
-          >
-            <div className="relative z-10 p-8">
-              <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 text-lg font-semibold  text-gray-600 text-left [&:not(:focus-visible)]:focus:outline-none">
-                  <span className="absolute inset-0 rounded-2xl" />
-                  {feature.name}
-              </h3>
-              <p className="mt-2 text-sm text-gray-500">
-                {feature.description}
-              </p>
-            </div>
+        <div
+          key={feature.name}
+          className="relative col-span-12 space-y-6 rounded-2xl border border-gray-300 transition-colors md:col-span-6"
+        >
+          <div className="relative z-10 p-8">
+            <feature.icon className="h-8 w-8" />
+            <h3 className="mt-6 text-left text-lg  font-semibold text-gray-600 [&:not(:focus-visible)]:focus:outline-none">
+              <span className="absolute inset-0 rounded-2xl" />
+              {feature.name}
+            </h3>
+            <p className="mt-2 text-sm text-gray-500">{feature.description}</p>
           </div>
-        ))}
+        </div>
+      ))}
     </div>
   )
 }
-
 
 export function PrimaryFeatures() {
   return (
     <section
       id="features"
       aria-label="Features for investing all your money"
-      className="border-gray-200 border-t bg-gray-100 py-20 sm:py-32"
+      className="border-t border-gray-200 bg-gray-100 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
@@ -395,7 +392,9 @@ export function PrimaryFeatures() {
             We build systems for web and mobile
           </h2>
           <p className="mt-2 text-lg text-gray-500">
-            CodeStream has a combined 40 years experience in Information Technology designing and building systems for large enterprises and small startups.
+            CodeStream has a combined 40 years experience in Information
+            Technology designing and building systems for large enterprises and
+            small startups.
           </p>
         </div>
       </Container>
