@@ -13,7 +13,7 @@ export default function Home() {
         <title>CodeStream.</title>
         <meta
           name="description"
-          content="CodeStream. azure cloud specialists, custom software development, systems architecture."
+          content="CodeStream. azure cloud specialists, custom software development, systems architecture and solutions."
         />
         <link rel="canonical" href="https://codestream.co.za/" />
       </Head>
