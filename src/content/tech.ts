@@ -1,8 +1,12 @@
 export type TechGroup = {
   title: string
   items: string[]
-  /** The AI column is the emphasis on this section — it inverts onto slate. */
-  emphasis?: boolean
+  /**
+   * Card ground. All three differ, so the set reads as three blocks rather than a
+   * pair plus an odd one out: warm neutral, cool tint, then the dark card that
+   * carries the emphasis of the section.
+   */
+  tone: 'warm' | 'cool' | 'dark'
 }
 
 export const capabilityIntro = {
@@ -14,6 +18,7 @@ export const capabilityIntro = {
 export const techGroups: TechGroup[] = [
   {
     title: 'Cloud & data',
+    tone: 'warm',
     items: [
       'Microsoft Azure',
       'Azure DevOps',
@@ -28,6 +33,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     title: 'Application',
+    tone: 'cool',
     items: [
       'C# / .NET',
       'ASP.NET Core',
@@ -37,21 +43,24 @@ export const techGroups: TechGroup[] = [
       'Node.js',
       'SignalR',
       'GraphQL',
-      'Ionic',
+      'React Native',
     ],
   },
   {
+    // This card is about building your systems WITH AI, not about building AI
+    // products. Name the tools and the practices, not the buzzwords.
     title: 'AI systems',
-    emphasis: true,
+    tone: 'dark',
     items: [
-      'Azure OpenAI',
-      '[YOUR MODEL PROVIDERS]',
-      'Retrieval over SQL & documents',
-      'Tool-using agents',
-      'Evaluation harnesses',
-      '[YOUR VECTOR STORE]',
-      'Prompt & model versioning',
-      'Cost and latency budgeting',
+      'Claude Code',
+      'OpenAI Codex',
+      'Grok',
+      'Context engineering',
+      'Skills curation',
+      'Subagent orchestration',
+      'MCP tool integration',
+      'Spec-driven delivery',
+      'Automated code review',
     ],
   },
 ]
