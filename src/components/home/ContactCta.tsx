@@ -1,14 +1,7 @@
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { contact } from '@/content/tech'
-import { site } from '@/content/site'
 import { CONTACT_EMAIL, mailtoHref } from '@/lib/utils'
-
-const DETAILS = [
-  { label: 'Email', value: CONTACT_EMAIL, href: mailtoHref() },
-  { label: 'Telephone', value: site.phone, href: undefined },
-  { label: 'LinkedIn', value: site.linkedin, href: undefined },
-] as const
 
 export function ContactCta() {
   return (
@@ -32,29 +25,18 @@ export function ContactCta() {
             </Reveal>
           </div>
 
+          {/* One way in, on purpose. Email is the only channel this site offers. */}
           <Reveal
             delay={200}
             className="bg-slate-deep px-7 py-8 text-paper lg:col-span-4 lg:col-start-9"
           >
-            <dl className="flex flex-col gap-6">
-              {DETAILS.map((detail) => (
-                <div key={detail.label}>
-                  <dt className="type-label text-wheat">{detail.label}</dt>
-                  <dd className="type-title mt-2 text-2xl">
-                    {detail.href ? (
-                      <a
-                        href={detail.href}
-                        className="inline-flex min-h-11 items-center transition-colors hover:text-wheat"
-                      >
-                        {detail.value}
-                      </a>
-                    ) : (
-                      <span className="inline-flex min-h-11 items-center">{detail.value}</span>
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <p className="type-label text-wheat">Email</p>
+            <a
+              href={mailtoHref()}
+              className="type-title mt-3 inline-flex min-h-11 items-center text-2xl break-all transition-colors hover:text-wheat sm:text-3xl"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </Reveal>
         </div>
       </Container>

@@ -7,9 +7,6 @@ export const site = {
   positioning:
     'Software consultancy · South Africa, working with teams in London, Frankfurt and Sydney',
   url: 'https://codestream.co.za/',
-  /** Bracketed values are placeholders — replace before this goes live. */
-  phone: '[YOUR NUMBER]',
-  linkedin: '[YOUR LINKEDIN]',
 } as const
 
 export const nav = [
