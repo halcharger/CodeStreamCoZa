@@ -1,35 +1,43 @@
-# Pocket
+# CodeStream (codestream.co.za)
 
-Pocket is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Static marketing website for **CodeStream Systems (PTY) LTD** — Azure specialists and custom software development, delivered with aggressive, responsible AI across development, delivery, and support.
 
-## Getting started
+## Stack
 
-To get started with this template, first install the npm dependencies:
+- React 19 + TypeScript
+- Vite
+- TanStack Router
+- Tailwind CSS v4
+- Framer Motion
+
+## Development
 
 ```bash
 npm install
-```
-
-Next, run the development server:
-
-```bash
 npm run dev
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+Open [http://localhost:5173](http://localhost:5173).
 
-## Customizing
+## Build
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+```bash
+npm run build
+npm run preview
+```
 
-## License
+Output is written to `dist/` for Azure Static Web Apps.
 
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+## Content
 
-## Learn more
+Marketing copy and data live under `src/content/`:
 
-To learn more about the technologies used in this site template, see the following resources:
+- `clients.ts` — client logos
+- `services.ts` — Dream / Design / Develop / Deliver
+- `ai.ts` — AI-embracing positioning
+- `projects.ts` — selected work
+- `tech.ts` — expertise groups
 
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
+## Deploy
+
+GitHub Actions deploys to Azure Static Web Apps on push to `master` (see `.github/workflows/`).

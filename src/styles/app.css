@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+/* Self-hosted. Archivo must come from the wdth build — the display face uses the
+   width axis (font-stretch), which the wght-only build does not carry. */
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource-variable/newsreader/wght-italic.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+@theme {
+  --font-sans: 'Archivo Variable', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+  /* Ground */
+  --color-slate-deep: #45616c;
+  --color-slate-line: #5b7883;
+  --color-slate-ghost: #54727d;
+
+  /* Paper */
+  --color-paper: #faf8f4;
+  --color-band: #f0ece2;
+  --color-rule: #e4dfd3;
+  --color-rule-soft: #e6e1d6;
+
+  /* Ink */
+  --color-ink: #2a3a42;
+  --color-ink-soft: #36444b;
+  --color-body: #556168;
+  --color-meta: #79828a;
+
+  /* On the slate ground */
+  --color-on-slate: #dde6e8;
+  --color-on-slate-meta: #cbdbdf;
+  --color-on-slate-nav: #d3dfe1;
+  --color-on-slate-list: #e4ecee;
+
+  /* Accents */
+  --color-coral: #cb8067;
+  --color-coral-deep: #a2604a;
+  --color-coral-ink: #3f2119;
+  --color-coral-body: #42251d;
+  --color-wheat: #eed9b5;
+  --color-wheat-deep: #a07c3f;
+  --color-aqua: #a6c6c3;
+  --color-aqua-deep: #5f8a86;
+
+  /* Whole-pixel type scale — see the design reference artboard */
+  --text-2xs: 0.625rem;   /* 10 */
+  --text-xs: 0.6875rem;   /* 11 */
+  --text-sm: 0.75rem;     /* 12 */
+  --text-base: 0.9375rem; /* 15 */
+  --text-md: 1rem;        /* 16 */
+  --text-lg: 1.0625rem;   /* 17 */
+  --text-xl: 1.1875rem;   /* 19 */
+  --text-2xl: 1.3125rem;  /* 21 */
+  --text-3xl: 1.4375rem;  /* 23 */
+  --text-4xl: 2.25rem;    /* 36 */
+  --text-5xl: 2.375rem;   /* 38 */
+  --text-6xl: 2.625rem;   /* 42 */
+  --text-7xl: 2.75rem;    /* 44 */
+  --text-8xl: 3.125rem;   /* 50 */
+  --text-9xl: 4.5rem;     /* 72 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-coral) 35%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral-deep);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* The display face: same family, widened and heavier. */
+  .type-display {
+    font-family: var(--font-sans);
+    font-stretch: 106%;
+    font-weight: 700;
+    letter-spacing: -0.024em;
+  }
+
+  .type-title {
+    font-family: var(--font-sans);
+    font-stretch: 104%;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .type-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+
+/* Motion. The starting state is applied by the Reveal component at runtime, never
+   here — a stylesheet that hides everything at opacity 0 is one failed request
+   away from a blank page, and crawlers see it that way too. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
