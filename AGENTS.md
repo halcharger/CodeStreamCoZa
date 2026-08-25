@@ -15,7 +15,7 @@ Positioning to preserve in copy and UI:
 1. Azure / custom software / systems architecture specialists  
 2. Fully **AI-embracing** delivery — AI used aggressively across development, delivery, and support  
 3. Tagline: **Dream, Design, Develop, Deliver**  
-4. Legal entity details in the footer (always visible)
+4. Legal entity details in the footer, revealed by clicking the wordmark (carried over from the previous site, so clients can copy the registration and VAT numbers for procurement)
 
 ## Stack
 

@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Logo, Wordmark } from '@/components/ui/Logo'
 import { site } from '@/content/site'
 
 export function Footer() {
+  const [showDetails, setShowDetails] = useState(false)
+
   return (
     <footer className="bg-slate-deep text-on-slate">
       <Container>
@@ -10,20 +13,48 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <Logo className="size-8" />
             <div>
-              <Wordmark className="text-md" />
+              {/*
+                Carried over from the previous site: the registration and VAT numbers
+                stay out of the way until someone clicks the wordmark, which is how
+                they get copied when a client needs them for procurement.
+
+                It was a plain <p onClick> before, so it was mouse-only and silent to
+                assistive tech. Same behaviour, but as a real control.
+
+                Deliberately no hover state and no pointer cursor: this is meant to
+                stay unadvertised, so it must look identical to the surrounding text.
+                Do not "fix" it by adding an affordance. Keyboard focus and the
+                aria-expanded announcement are what keep it reachable.
+              */}
+              <button
+                type="button"
+                onClick={() => setShowDetails((open) => !open)}
+                aria-expanded={showDetails}
+                aria-controls="company-details"
+                className="-my-3.5 block cursor-default py-3.5 text-left"
+              >
+                <Wordmark className="text-md" />
+                <span className="sr-only">
+                  {showDetails ? 'Hide company registration details' : 'Show company registration details'}
+                </span>
+              </button>
               <p className="font-mono text-2xs tracking-[0.1em] text-on-slate-meta">
                 {site.tagline}
               </p>
             </div>
           </div>
 
-          <p className="font-mono text-2xs leading-[1.9] text-on-slate-meta sm:text-right">
-            {site.legalName}
-            <span className="hidden sm:inline"> · </span>
-            <br className="sm:hidden" />
-            Reg {site.companyRegistration} · VAT {site.vatNumber}
-            <br />© {new Date().getFullYear()} · All rights reserved
-          </p>
+          <div className="font-mono text-2xs leading-[1.9] text-on-slate-meta sm:text-right">
+            {/* Kept as separate lines so each value can be selected on its own. */}
+            <p id="company-details" hidden={!showDetails} className="mb-1 text-on-slate">
+              {site.legalName}
+              <br />
+              Company registration {site.companyRegistration}
+              <br />
+              VAT registration {site.vatNumber}
+            </p>
+            <p>&copy; {new Date().getFullYear()} &middot; All rights reserved</p>
+          </div>
         </div>
       </Container>
     </footer>
