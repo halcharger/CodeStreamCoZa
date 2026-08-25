@@ -6,25 +6,31 @@ import { hero, site } from '@/content/site'
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-slate-deep text-paper">
-      {/* The mark again, oversized and ghosted. Decorative only. */}
-      <svg
-        className="pointer-events-none absolute -right-28 top-10 hidden size-[620px] xl:block"
-        viewBox="0 0 40 40"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="20" cy="20" r="18" stroke="#54727d" strokeWidth="1" />
-        <path
-          d="M15 13.5l6.5 6.5-6.5 6.5"
-          stroke="#54727d"
-          strokeWidth="1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-
       <Container className="relative">
-        <div className="grid gap-x-8 gap-y-12 py-14 sm:py-20 lg:grid-cols-12 lg:py-24">
+        {/*
+          Lives inside the Container so it anchors to the content column rather than
+          the full-bleed section — right-0 puts its edge on the same line the copy
+          and the meta column end on.
+        */}
+        <svg
+          className="pointer-events-none absolute top-10 right-0 hidden size-[620px] xl:block"
+          viewBox="0 0 40 40"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="20" cy="20" r="18" stroke="#54727d" strokeWidth="1" />
+          <path
+            d="M15 13.5l6.5 6.5-6.5 6.5"
+            stroke="#54727d"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+
+        {/* relative so the copy is a positioned sibling and paints above the mark —
+            without it the absolute svg wins the painting order and sits over the text */}
+        <div className="relative grid gap-x-8 gap-y-12 py-14 sm:py-20 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-9">
             <Reveal immediate>
               <div className="type-eyebrow flex items-center gap-3 text-wheat">
@@ -40,14 +46,14 @@ export function Hero() {
             </Reveal>
 
             <Reveal immediate delay={90}>
-              <h1 className="type-display mt-6 text-4xl leading-[1.0] sm:text-6xl lg:text-8xl xl:text-9xl">
-                {hero.headline.map((line, index) => (
-                  <span key={line} className="block">
-                    {line}
-                    {/* the accent word rides the last line rather than wrapping alone */}
-                    {index === hero.headline.length - 1 ? (
-                      <span className="text-coral"> {hero.headlineAccent}</span>
-                    ) : null}
+              <h1 className="type-display mt-6 text-4xl leading-[1.0] text-balance sm:text-6xl lg:text-8xl xl:text-9xl">
+                {hero.headline.map((line, lineIndex) => (
+                  <span key={lineIndex} className="block">
+                    {line.map((run, runIndex) => (
+                      <span key={runIndex} className={run.accent ? 'text-coral' : undefined}>
+                        {run.text}
+                      </span>
+                    ))}
                   </span>
                 ))}
               </h1>

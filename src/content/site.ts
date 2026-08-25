@@ -5,7 +5,7 @@ export const site = {
   companyRegistration: '2017/049262/07',
   tagline: 'Dream, design, develop, deliver',
   positioning:
-    'Software consultancy · South Africa, working with teams in London, Frankfurt and Sydney',
+    'AI Enhanced Software consultancy · South Africa, working with teams in London',
   url: 'https://codestream.co.za/',
 } as const
 
@@ -16,9 +16,20 @@ export const nav = [
   { label: 'Capability', href: '#capability' },
 ] as const
 
+/** A run of headline text. `accent` colours it, so any word can carry the accent. */
+export type HeadlineRun = { text: string; accent?: boolean }
+
+/* One entry per line, one per run within it. Broken deliberately, not by wrapping.
+   Typed rather than `as const`: the literal types would make `accent` absent from
+   the runs that lack it, so reading `run.accent` would not compile. */
+const headline: HeadlineRun[][] = [
+  [{ text: 'The ' }, { text: 'AI', accent: true }, { text: ' part is new.' }],
+  [{ text: 'The discipline &' }],
+  [{ text: 'experience ' }, { text: "aren't.", accent: true }],
+]
+
 export const hero = {
-  headline: ['The AI part', 'is new. The', 'discipline'] as const,
-  headlineAccent: "isn't.",
+  headline,
   body:
     'For twenty years the people here have built the systems large organisations actually run their day on — intraday exposure reporting at Anglo American, bond research at the London Stock Exchange, master data and a reporting warehouse at SPAR. We are now applying the same engineering discipline to AI.',
   meta: [
