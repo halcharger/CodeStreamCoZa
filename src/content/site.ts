@@ -36,11 +36,67 @@ export const hero = {
   ],
 } as const
 
-export const clients = [
-  'Anglo American',
-  'London Stock Exchange',
-  'Clifford Chance',
-  'The SPAR Group',
-  'Uniper',
-  'Chelsea FC',
-] as const
+/**
+ * Client logos, restored from the previous site.
+ *
+ * These six assets are inconsistent, which is what the per-logo fields deal with:
+ *
+ *  - Anglo American, LSE, Chelsea ship with real transparency. Nothing to fix.
+ *  - SPAR is a red mark on a white JPEG background. mix-blend-multiply drops the
+ *    white against a light ground, so it works as-is.
+ *  - Clifford Chance is a WHITE wordmark on a solid black rectangle, and Uniper is
+ *    a WHITE wordmark on solid blue. Both are built for dark backgrounds and would
+ *    otherwise sit on this page as opaque boxes. `filter` inverts them to dark
+ *    artwork on white, which multiply then keys out. Measured: this leaves 94% and
+ *    76% of each file as clean ground.
+ *
+ * `height` is optical, not arithmetic. Divide the target mark height by the share
+ * of the file the artwork actually occupies — Clifford Chance is only 46% artwork
+ * and 54% padding, so it needs roughly double the height of a tight mark like
+ * Anglo American to read at the same size.
+ *
+ * Replace any of these with an official transparent SVG and its `filter` can go.
+ */
+export type ClientLogo = {
+  name: string
+  src: string
+  /** Tailwind height classes, chosen by eye against the others. */
+  height: string
+  /** CSS filter chain, where the source file needs keying. */
+  filter?: string
+}
+
+export const clientLogos: ClientLogo[] = [
+  {
+    name: 'Anglo American',
+    src: '/images/logos/angloamerican.svg',
+    height: 'h-7 sm:h-9',
+  },
+  {
+    name: 'London Stock Exchange',
+    src: '/images/logos/londonstockexchange_logo.svg',
+    height: 'h-11 sm:h-13',
+  },
+  {
+    name: 'Clifford Chance',
+    src: '/images/logos/cliffordchance.png',
+    height: 'h-15 sm:h-18',
+    filter: 'invert(1) contrast(1.4)',
+  },
+  {
+    name: 'The SPAR Group',
+    src: '/images/logos/SPAR.jpg',
+    height: 'h-6 sm:h-7',
+  },
+  {
+    name: 'Uniper',
+    src: '/images/logos/uniper.png',
+    height: 'h-12 sm:h-14',
+    filter: 'grayscale(1) invert(1) contrast(3.4) brightness(1.35)',
+  },
+  {
+    name: 'Chelsea Football Club',
+    src: '/images/logos/chelsea.webp',
+    height: 'h-14 sm:h-16',
+  },
+]
