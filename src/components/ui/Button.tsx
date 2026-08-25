@@ -28,7 +28,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink
 export function Button({ variant = 'primary', className, children, ...props }: ButtonProps) {
   const isFill = variant === 'primary'
   const classes = cn(
-    'inline-flex items-center gap-3 text-md font-semibold transition-colors',
+    'group inline-flex items-center gap-3 text-md font-semibold transition-colors',
     // 44px minimum hit target, everywhere
     isFill ? 'min-h-11 px-6 py-4 sm:px-7' : 'min-h-11',
     variants[variant],
@@ -54,7 +54,7 @@ export function Button({ variant = 'primary', className, children, ...props }: B
 export function ArrowRight({ className }: { className?: string }) {
   return (
     <svg
-      className={cn('size-4 shrink-0', className)}
+      className={cn('size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5', className)}
       viewBox="0 0 20 20"
       fill="none"
       stroke="currentColor"

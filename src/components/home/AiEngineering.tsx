@@ -36,19 +36,25 @@ export function AiEngineering() {
                 el="li"
                 delay={index * 90}
                 className={
-                  'grid gap-x-7 gap-y-3 border-t py-8 sm:grid-cols-[108px_minmax(0,1fr)] ' +
-                  (index === 0 ? 'border-t-2 border-ink' : 'border-rule') +
+                  (index === 0 ? 'border-t-2 border-t-ink' : 'border-t border-rule') +
                   (index === aiPractices.length - 1 ? ' border-b-2 border-b-ink' : '')
                 }
               >
-                <p className="type-display text-6xl leading-[0.9] text-coral" aria-hidden="true">
-                  {practice.number}
-                </p>
-                <div>
-                  <h3 className="type-title text-3xl">{practice.title}</h3>
-                  <p className="mt-3 max-w-[62ch] text-md leading-[1.72] text-body">
-                    {practice.body}
+                {/* The rules stay pinned to the column; only the tint bleeds past it,
+                    so the hover reads as a highlight rather than a shifting grid. */}
+                <div className="group -mx-4 grid gap-x-7 gap-y-3 px-4 py-8 transition-colors duration-200 hover:bg-band sm:grid-cols-[108px_minmax(0,1fr)]">
+                  <p
+                    className="type-display text-6xl leading-[0.9] text-coral transition-[color,translate] duration-200 group-hover:-translate-y-0.5 group-hover:text-coral-deep"
+                    aria-hidden="true"
+                  >
+                    {practice.number}
                   </p>
+                  <div>
+                    <h3 className="type-title text-3xl">{practice.title}</h3>
+                    <p className="mt-3 max-w-[62ch] text-md leading-[1.72] text-body">
+                      {practice.body}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}

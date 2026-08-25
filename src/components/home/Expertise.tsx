@@ -1,7 +1,7 @@
-import { Container } from '@/components/ui/Container'
-import { Eyebrow } from '@/components/ui/Eyebrow'
-import { Reveal } from '@/components/ui/Reveal'
-import { capabilityIntro, techGroups } from '@/content/tech'
+import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Reveal } from "@/components/ui/Reveal";
+import { capabilityIntro, techGroups } from "@/content/tech";
 
 export function Expertise() {
   return (
@@ -31,35 +31,42 @@ export function Expertise() {
                 key={group.title}
                 delay={index * 90}
                 className={
-                  group.emphasis
-                    ? 'bg-slate-deep px-6 py-7 sm:col-span-2 lg:col-span-1'
-                    : 'bg-band px-6 py-7'
+                  group.emphasis ? "sm:col-span-2 lg:col-span-1" : undefined
                 }
               >
-                <h3
+                <div
                   className={
-                    group.emphasis
-                      ? 'type-label border-b-2 border-coral pb-3 text-wheat'
-                      : 'type-label border-b-2 border-ink pb-3 text-body'
+                    "group h-full px-6 py-7 transition-[background-color,transform] duration-200 hover:-translate-y-0.5 " +
+                    (group.emphasis
+                      ? "bg-slate-deep hover:bg-slate-raised"
+                      : "bg-band hover:bg-paper")
                   }
                 >
-                  {group.title}
-                </h3>
-                <ul
-                  className={
-                    'mt-4 flex flex-col gap-2.5 text-base ' +
-                    (group.emphasis ? 'text-on-slate-list' : 'text-ink-soft')
-                  }
-                >
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                  <h3
+                    className={
+                      group.emphasis
+                        ? "type-label border-b-2 border-coral pb-3 text-wheat"
+                        : "type-label border-b-2 border-ink pb-3 text-body transition-colors duration-200 group-hover:text-coral-deep"
+                    }
+                  >
+                    {group.title}
+                  </h3>
+                  <ul
+                    className={
+                      "mt-4 flex flex-col gap-2.5 text-base " +
+                      (group.emphasis ? "text-on-slate-list" : "text-ink-soft")
+                    }
+                  >
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </Container>
     </section>
-  )
+  );
 }

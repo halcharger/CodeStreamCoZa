@@ -39,7 +39,7 @@ export function Header() {
             ))}
             <a
               href="#contact"
-              className="type-eyebrow bg-coral px-5 py-3 font-medium text-coral-ink transition-colors hover:bg-wheat"
+              className="type-eyebrow bg-coral px-5 py-3 font-medium text-coral-ink transition-colors hover:bg-coral-deep hover:text-paper"
             >
               Start a conversation
             </a>

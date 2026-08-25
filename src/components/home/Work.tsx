@@ -38,9 +38,14 @@ export function Work() {
                 key={project.ref}
                 el="li"
                 delay={Math.min(index * 40, 420)}
-                className={`${ROW} items-baseline border-b border-slate-line py-5 lg:py-6`}
+                className={`${ROW} group relative items-baseline border-b border-slate-line py-5 transition-colors duration-200 hover:bg-slate-raised lg:py-6`}
               >
-                <p className="hidden font-mono text-sm text-wheat-deep xl:block">
+                {/* the eyebrow rule motif again: the row draws its own edge on hover */}
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-4 top-0 h-full w-0.5 origin-top scale-y-0 bg-coral transition-transform duration-200 group-hover:scale-y-100"
+                />
+                <p className="hidden font-mono text-sm text-wheat transition-colors duration-200 group-hover:text-coral xl:block">
                   <span className="sr-only">Reference </span>
                   {project.ref}
                 </p>
