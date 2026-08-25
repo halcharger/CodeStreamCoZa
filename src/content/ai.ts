@@ -1,8 +1,13 @@
+/**
+ * This section is about building clients' business systems WITH AI — the delivery
+ * advantage — not about building AI products for them. Keep the register concrete:
+ * what changes, what deliberately doesn't, and who stays accountable.
+ */
 export const aiIntro = {
-  heading: 'Where AI actually pays',
+  heading: 'Built faster, held to the same bar',
   body:
-    'Most AI pilots stall at the point where they meet a real system of record. That is the part we have been doing for twenty years.',
-  aside: 'The model is the easy part. Everything it has to touch is not.',
+    'AI has changed how quickly a system can be built. It has not changed what makes one correct, maintainable, or safe to put in front of your customers.',
+  aside: 'Generated code is a draft. Someone still has to be accountable for what ships.',
 } as const
 
 export type AiPractice = {
@@ -14,26 +19,26 @@ export type AiPractice = {
 export const aiPractices: AiPractice[] = [
   {
     number: '01',
-    title: 'Retrieval over the systems you already run',
+    title: 'Agents do the typing, engineers own the design',
     body:
-      'Your knowledge is in SQL Server, Azure Cosmos DB, a data lake and fifteen years of documents — not in a vector database someone stood up last quarter. We build retrieval that reads those systems in place, respects the permissions already on them, and returns answers that can be traced back to a row.',
+      'The architecture, the data model and the failure modes are still decided by people who have run production systems for two decades. What AI removes is the fortnight of boilerplate between making that decision and having a working slice to argue with — not the decision itself.',
   },
   {
     number: '02',
-    title: 'Agents with a known blast radius',
+    title: 'Context is the actual work',
     body:
-      'An agent that can write to a production system needs what any other deploy needs: scoped credentials, an audit trail, a rollback, and a human in the loop where the money is. We design the boundary first and the prompt second, so the result can be handed to an operations team rather than babysat by its author.',
+      'A coding agent is only as useful as what it can see: your schema, your conventions, your existing services, and the reason the ticket exists at all. We spend the setup time assembling that context and curating the skills an agent reuses, because it is the whole difference between plausible code and code that fits your system.',
   },
   {
     number: '03',
-    title: 'Evaluation before enthusiasm',
+    title: 'Review that assumes the code is wrong',
     body:
-      'We build the evaluation harness before we build the feature, against your data and your definition of a correct answer. It is the only honest way to tell whether a model change helped — and the fastest way to find out that a problem did not need a model at all.',
+      'Everything generated goes through the same tests, the same pipeline and the same human review as anything hand-written, and rather more scepticism — a confident wrong answer looks exactly like a right one. The speed comes from the drafting. It never comes from skipping the checks.',
   },
   {
     number: '04',
-    title: 'Running it after launch',
+    title: 'You get a codebase, not a dependency on us',
     body:
-      'Cost per request, latency budgets, prompt and model versioning, drift as the underlying data moves. AI systems have an operational profile that looks nothing like a CRUD application, and it is where the second-year budget goes if nobody planned for it.',
+      'Delivered quickly is worth nothing if what lands is unmaintainable. Structure, naming, tests and documentation are held to the standard your own team would have to work in — whether or not they use the same tools we did.',
   },
 ]

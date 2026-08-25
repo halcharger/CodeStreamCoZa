@@ -9,9 +9,9 @@ export function AiEngineering() {
       <Container>
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Eyebrow>AI engineering</Eyebrow>
+            <Eyebrow>AI-assisted delivery</Eyebrow>
             <Reveal delay={60}>
-              <h2 className="type-display mt-6 max-w-[11ch] text-4xl leading-[1.08] sm:text-5xl">
+              <h2 className="type-display mt-6 max-w-[16ch] text-4xl leading-[1.08] sm:text-5xl">
                 {aiIntro.heading}
               </h2>
             </Reveal>

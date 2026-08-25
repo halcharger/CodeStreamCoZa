@@ -13,7 +13,7 @@ export const site = {
 } as const
 
 export const nav = [
-  { label: 'AI engineering', href: '#ai' },
+  { label: 'AI delivery', href: '#ai' },
   { label: 'Work', href: '#work' },
   { label: 'Approach', href: '#approach' },
   { label: 'Capability', href: '#capability' },
