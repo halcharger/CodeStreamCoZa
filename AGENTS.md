@@ -9,14 +9,13 @@ Guidance for AI coding agents working in this repository.
 - **Product type:** brochure / advertising site only
 - **Not** a product app: no auth, no user accounts, no login/register
 - **API:** contact form only — Cloudflare Pages Function at `functions/api/contact.ts` → Resend → `info@codestream.co.za`
-- **Primary deploy target:** Cloudflare Pages (Git integration → `dist/` + `functions/`)
-- **Also:** Azure Static Web Apps workflow still publishes static `dist/` (no Functions — contact API will 404 there)
+- **Hosting / deploy:** Cloudflare Pages only (Git integration → `dist/` + `functions/`)
 
 Positioning to preserve in copy and UI:
 
-1. Azure / custom software / systems architecture specialists  
-2. Fully **AI-embracing** delivery — AI used aggressively across development, delivery, and support  
-3. Tagline: **Dream, Design, Develop, Deliver**  
+1. Azure / custom software / systems architecture specialists (Microsoft Azure is a **capability**, not the site host)
+2. Fully **AI-embracing** delivery — AI used aggressively across development, delivery, and support
+3. Tagline: **Dream, Design, Develop, Deliver**
 4. Legal entity details in the footer, revealed by clicking the wordmark (carried over from the previous site, so clients can copy the registration and VAT numbers for procurement)
 
 ## Stack
@@ -30,8 +29,9 @@ Positioning to preserve in copy and UI:
 | Motion | Motion (`motion/react`, the renamed Framer Motion) |
 | Icons | lucide-react |
 | Class helpers | `clsx` + `tailwind-merge` via `cn()` in `src/lib/utils.ts` |
+| Hosting | Cloudflare Pages + Pages Functions |
 
-Do **not** reintroduce Next.js, the old Tailwind UI “Pocket” template, MediatR-style app shells, or auth pages.
+Do **not** reintroduce Next.js, the old Tailwind UI “Pocket” template, MediatR-style app shells, auth pages, or Azure Static Web Apps deploy workflows.
 
 ## Commands
 
@@ -49,7 +49,7 @@ Prefer verifying with `npm run build` before claiming work is done.
 ```
 index.html                 # SEO meta, root mount
 functions/api/contact.ts   # Pages Function: POST /api/contact → Resend
-public/                    # static assets (fonts, images, favicon, SWA config)
+public/                    # static assets, _redirects, _headers
 wrangler.toml              # local pages dev + default CONTACT_* vars
 src/
   main.tsx                 # router bootstrap
@@ -121,24 +121,19 @@ outside those tokens.
 
 - File-based routes in `src/routes/`; TanStack Router plugin regenerates `src/routeTree.gen.ts`.
 - Primary UX is a **single landing page** with hash anchors (`#services`, `#ai`, `#work`, etc.).
-- Keep the site static-friendly for Azure SWA (`public/staticwebapp.config.json` navigation fallback).
+- Cloudflare Pages SPA fallback lives in `public/_redirects` (`/* → /index.html` 200; real files still win).
 
 ## Deploy
 
-**Cloudflare Pages (primary — includes Functions)**
+**Cloudflare Pages only**
 
-- Git-connected project builds with `npm run build` → `dist/`
-- Root `functions/` is published automatically with that build (PR previews included)
-- Secrets: `RESEND_API_KEY` (required), optional `CONTACT_TO` / `CONTACT_FROM`
+- Git-connected project builds with dashboard settings: build command `npm run build`, output `dist/`
+- Root `functions/` is published automatically with that build (PR / branch previews included)
+- Secrets: `RESEND_API_KEY` (required on Preview and Production), optional `CONTACT_TO` / `CONTACT_FROM`
+- Do not add Azure Static Web Apps (or other static-only hosts) as a second deploy path — the contact Function will not run there
+- `wrangler.toml` is for local Functions development; do not set `pages_build_output_dir` in it for Git deploys
 
-**Azure Static Web Apps (static only)**
-
-Workflow: `.github/workflows/azure-static-web-apps-icy-hill-047cbbb03.yml`
-
-- Build: `npm run build` (typecheck → client build → SSR build → prerender)
-- Output: `dist` — **no Pages Functions**; contact API will not work on Azure
-
-Shared build notes:
+Build notes:
 
 - `npm run build` prerenders every route in `ROUTES` (`scripts/prerender.mjs`) into
   static HTML so `dist/index.html` ships the real page rather than an empty shell.
@@ -149,16 +144,17 @@ Shared build notes:
 
 ## Out of scope (unless the user asks)
 
-- Authentication, dashboards, CMS, blogs  
-- Captcha / Turnstile (add only if spam becomes a problem)  
-- Multi-language  
-- Git worktrees for routine feature work (use normal branches)  
+- Authentication, dashboards, CMS, blogs
+- Captcha / Turnstile (add only if spam becomes a problem)
+- Multi-language
+- Git worktrees for routine feature work (use normal branches)
+- Reintroducing Azure Static Web Apps hosting
 
 ## Working agreements for agents
 
-1. Prefer small, focused changes that match existing patterns.  
-2. Do not commit, push, or open PRs unless the user asks.  
-3. Do not create git worktrees unless the user explicitly requests them.  
-4. After substantive UI/stack changes, run `npm run build`.  
-5. Keep AI messaging confident and professional — process advantage, not sci-fi hype.  
+1. Prefer small, focused changes that match existing patterns.
+2. Do not commit, push, or open PRs unless the user asks.
+3. Do not create git worktrees unless the user explicitly requests them.
+4. After substantive UI/stack changes, run `npm run build`.
+5. Keep AI messaging confident and professional — process advantage, not sci-fi hype.
 6. When adding sections, wire them into `src/routes/index.tsx` and the Header nav if they should be discoverable.
