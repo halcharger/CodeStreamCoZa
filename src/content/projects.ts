@@ -60,20 +60,28 @@ export const projects: Project[] = [
   },
   {
     ref: '008',
+    client: 'Fluenty IT — TTTF Payroll',
+    summary:
+      'Multi-tenant Nigerian payroll platform: pluggable tax rulesets, pay-run processing and statutory reporting',
+    stack: ['React', 'C#', 'Event Sourcing', 'AWS', 'PostgreSQL'],
+    location: 'Nigeria',
+  },
+  {
+    ref: '009',
     client: 'DigitalTwin',
     summary: 'Live asset tracking over Bluetooth low-energy beacons',
     stack: ['Angular', 'C#', 'SignalR', 'Azure IoT', 'SQL Server'],
     location: 'South Africa',
   },
   {
-    ref: '009',
+    ref: '010',
     client: 'SMEasy',
     summary: 'Online accounting package for small business',
     stack: ['Angular', 'ASP.NET', 'Azure SQL', 'Azure DevOps'],
     location: 'South Africa',
   },
   {
-    ref: '010',
+    ref: '011',
     client: 'CashRewards',
     summary: 'Customer coupon management',
     stack: ['Angular'],
