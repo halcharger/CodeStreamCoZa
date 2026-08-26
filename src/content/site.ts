@@ -32,16 +32,6 @@ export const hero = {
   headline,
   body:
     'For twenty years the people here have built the systems large organisations actually run their day on — intraday exposure reporting at Anglo American, bond research at the London Stock Exchange, master data and a reporting warehouse at SPAR. We are now applying the same engineering discipline to AI.',
-  meta: [
-    {
-      label: 'Practice',
-      lines: ['Systems architecture', 'Azure & AWS platform', 'AI systems engineering'],
-    },
-    {
-      label: 'Team',
-      lines: ['Senior engineers only', '40+ years combined'],
-    },
-  ],
 } as const
 
 /**
