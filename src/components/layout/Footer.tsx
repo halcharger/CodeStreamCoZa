@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Logo, Wordmark } from '@/components/ui/Logo'
 import { site } from '@/content/site'
+import { cn } from '@/lib/utils'
 
 export function Footer() {
   const [showDetails, setShowDetails] = useState(false)
@@ -9,7 +10,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-deep text-on-slate">
       <Container>
-        <div className="flex flex-col gap-8 py-10 sm:flex-row sm:items-end sm:justify-between lg:py-12">
+        <div className="flex flex-col gap-8 py-10 sm:flex-row sm:items-start sm:justify-between lg:py-12">
           <div className="flex items-center gap-3">
             <Logo className="size-8" />
             <div>
@@ -45,15 +46,22 @@ export function Footer() {
           </div>
 
           <div className="font-mono text-2xs leading-[1.9] text-on-slate-meta sm:text-right">
-            {/* Kept as separate lines so each value can be selected on its own. */}
-            <p id="company-details" hidden={!showDetails} className="mb-1 text-on-slate">
-              {site.legalName}
-              <br />
-              Company registration {site.companyRegistration}
-              <br />
-              VAT registration {site.vatNumber}
-            </p>
             <p>&copy; {new Date().getFullYear()} &middot; All rights reserved</p>
+            {/* Always in layout (`invisible`, not `hidden`) so toggling does not
+                change footer height. Middots keep it on one line. */}
+            <p
+              id="company-details"
+              aria-hidden={!showDetails}
+              className={cn('mt-1 text-on-slate', !showDetails && 'invisible')}
+            >
+              {site.legalName}
+              <span aria-hidden="true"> &middot; </span>
+              Company registration{' '}
+              <strong className="font-semibold text-paper">{site.companyRegistration}</strong>
+              <span aria-hidden="true"> &middot; </span>
+              VAT registration{' '}
+              <strong className="font-semibold text-paper">{site.vatNumber}</strong>
+            </p>
           </div>
         </div>
       </Container>
