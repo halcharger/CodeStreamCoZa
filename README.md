@@ -69,7 +69,8 @@ Set these in the Pages project → **Settings → Environment variables** for **
 
 ### Deploy notes
 
-- **Cloudflare Pages (Git):** build → `dist/` + auto-publish `functions/`. This is the host that supports `/api/contact`.
+- **Cloudflare Pages (Git):** dashboard build command `npm run build`, output `dist/`, plus auto-publish of root `functions/`. This is the host that supports `/api/contact`.
+- **`wrangler.toml`:** local Pages Functions / vars only. Do not add `pages_build_output_dir` — that makes Pages skip the dashboard build command and fail with `Output directory "dist" not found`.
 - **Azure Static Web Apps:** static `dist/` only — `/api/contact` will not work there.
 
 Verify `codestream.co.za` (or your chosen from-domain) in Resend before relying on production sends.
