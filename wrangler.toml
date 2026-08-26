@@ -1,0 +1,16 @@
+# Local Pages Functions development only.
+#   npm run build
+#   npx wrangler pages dev dist
+#
+# Do NOT set `pages_build_output_dir` here. When that key is present, Cloudflare
+# Pages Git builds treat this file as the source of truth for build config and
+# skip the dashboard build command — which left `dist/` missing and failed deploy.
+# Keep Production/Preview build command (`npm run build`) and output dir (`dist`)
+# in the Cloudflare Pages project settings. Root `functions/` still deploys with
+# those Git builds automatically.
+
+name = "codestreamcoza-website"
+
+[vars]
+CONTACT_TO = "info@codestream.co.za"
+CONTACT_FROM = "CodeStream Website <noreply@codestream.co.za>"
