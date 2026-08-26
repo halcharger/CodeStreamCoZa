@@ -1,7 +1,7 @@
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
+import { ContactForm } from '@/components/home/ContactForm'
 import { contact } from '@/content/tech'
-import { CONTACT_EMAIL, mailtoHref } from '@/lib/utils'
 
 export function ContactCta() {
   return (
@@ -25,18 +25,8 @@ export function ContactCta() {
             </Reveal>
           </div>
 
-          {/* One way in, on purpose. Email is the only channel this site offers. */}
-          <Reveal
-            delay={200}
-            className="bg-slate-deep px-7 py-8 text-paper lg:col-span-4 lg:col-start-9"
-          >
-            <p className="type-label text-wheat">Email</p>
-            <a
-              href={mailtoHref()}
-              className="type-title mt-3 inline-flex min-h-11 items-center text-2xl break-all transition-colors hover:text-wheat sm:text-3xl"
-            >
-              {CONTACT_EMAIL}
-            </a>
+          <Reveal delay={200} className="lg:col-span-5 lg:col-start-8">
+            <ContactForm />
           </Reveal>
         </div>
       </Container>

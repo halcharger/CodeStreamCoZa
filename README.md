@@ -5,10 +5,11 @@ Static marketing website for **CodeStream Systems (PTY) LTD** — Azure speciali
 ## Stack
 
 - React 19 + TypeScript
-- Vite
+- Vite (+ prerender)
 - TanStack Router
 - Tailwind CSS v4
-- Framer Motion
+- Motion
+- Cloudflare Pages Functions + Resend (contact form)
 
 ## Development
 
@@ -19,6 +20,16 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173).
 
+### Contact API locally
+
+The contact form posts to `/api/contact`, implemented as a Cloudflare Pages Function in `functions/api/contact.ts`.
+
+```bash
+cp .dev.vars.example .dev.vars   # add your RESEND_API_KEY
+npm run build
+npx wrangler pages dev dist
+```
+
 ## Build
 
 ```bash
@@ -26,18 +37,39 @@ npm run build
 npm run preview
 ```
 
-Output is written to `dist/` for Azure Static Web Apps.
+Output is written to `dist/`. Cloudflare Pages also deploys the root `functions/` directory with the same build.
 
 ## Content
 
 Marketing copy and data live under `src/content/`:
 
-- `clients.ts` — client logos
+- `site.ts` — nav, hero, clients, legal
 - `services.ts` — Dream / Design / Develop / Deliver
-- `ai.ts` — AI-embracing positioning
+- `ai.ts` — AI engineering practices
 - `projects.ts` — selected work
-- `tech.ts` — expertise groups
+- `tech.ts` — capability + contact section copy
 
-## Deploy
+## Contact form
 
-GitHub Actions deploys to Azure Static Web Apps on push to `master` (see `.github/workflows/`).
+Fields: **name**, **email**, **message**.
+
+- Client validation disables **Send** until all fields are valid
+- Submit shows a busy state, then success or error
+- Cloudflare Pages Function emails `info@codestream.co.za` via Resend (`reply_to` = visitor email)
+
+### Secrets (Cloudflare Pages)
+
+Set these in the Pages project → **Settings → Environment variables** for **Production** and **Preview**:
+
+| Name | Required | Notes |
+|------|----------|--------|
+| `RESEND_API_KEY` | Yes | Resend API key (Secret) |
+| `CONTACT_TO` | No | Defaults to `info@codestream.co.za` |
+| `CONTACT_FROM` | No | Defaults to `CodeStream Website <noreply@codestream.co.za>` — domain must be verified in Resend |
+
+### Deploy notes
+
+- **Cloudflare Pages (Git):** build → `dist/` + auto-publish `functions/`. This is the host that supports `/api/contact`.
+- **Azure Static Web Apps:** static `dist/` only — `/api/contact` will not work there.
+
+Verify `codestream.co.za` (or your chosen from-domain) in Resend before relying on production sends.
