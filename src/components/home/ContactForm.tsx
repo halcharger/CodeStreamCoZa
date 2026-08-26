@@ -1,4 +1,4 @@
-import { useId, useState, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { LoaderCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import {
@@ -16,11 +16,18 @@ const emptyValues: ContactFormValues = {
   message: '',
 }
 
+/** Stable IDs — avoid useId() here; prerender HTML must match client hydration. */
+const FIELD_IDS = {
+  name: 'contact-name',
+  email: 'contact-email',
+  message: 'contact-message',
+  company: 'contact-company',
+} as const
+
 const fieldClassName =
   'min-h-11 w-full border border-slate-line bg-slate-raised px-3 py-2.5 text-md text-paper outline-none transition-colors placeholder:text-on-slate-meta focus:border-aqua'
 
 export function ContactForm() {
-  const formId = useId()
   const [values, setValues] = useState<ContactFormValues>(emptyValues)
   const [honeypot, setHoneypot] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -94,11 +101,11 @@ export function ContactForm() {
 
       <div className="mt-6 space-y-4">
         <div>
-          <label htmlFor={`${formId}-name`} className="type-label text-aqua">
+          <label htmlFor={FIELD_IDS.name} className="type-label text-aqua">
             Name
           </label>
           <input
-            id={`${formId}-name`}
+            id={FIELD_IDS.name}
             name="name"
             type="text"
             autoComplete="name"
@@ -112,11 +119,11 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor={`${formId}-email`} className="type-label text-aqua">
+          <label htmlFor={FIELD_IDS.email} className="type-label text-aqua">
             Email
           </label>
           <input
-            id={`${formId}-email`}
+            id={FIELD_IDS.email}
             name="email"
             type="email"
             autoComplete="email"
@@ -130,11 +137,11 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor={`${formId}-message`} className="type-label text-aqua">
+          <label htmlFor={FIELD_IDS.message} className="type-label text-aqua">
             Message
           </label>
           <textarea
-            id={`${formId}-message`}
+            id={FIELD_IDS.message}
             name="message"
             required
             rows={5}
@@ -148,9 +155,9 @@ export function ContactForm() {
 
         {/* Honeypot — hidden from people, not from naive bots */}
         <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
-          <label htmlFor={`${formId}-company`}>Company</label>
+          <label htmlFor={FIELD_IDS.company}>Company</label>
           <input
-            id={`${formId}-company`}
+            id={FIELD_IDS.company}
             name="company"
             type="text"
             tabIndex={-1}

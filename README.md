@@ -59,13 +59,22 @@ Fields: **name**, **email**, **message**.
 
 ### Secrets (Cloudflare Pages)
 
-Set these in the Pages project → **Settings → Environment variables** for **Production** and **Preview**:
+The Function reads `RESEND_API_KEY` at **runtime**. If it is missing you get HTTP 500 with `Contact form is not configured`.
+
+Set secrets in the Pages project → **Settings** → **Variables and Secrets** (or **Environment variables**):
 
 | Name | Required | Notes |
 |------|----------|--------|
-| `RESEND_API_KEY` | Yes | Resend API key (Secret) |
+| `RESEND_API_KEY` | Yes | Resend API key — type **Secret** / Encrypt |
 | `CONTACT_TO` | No | Defaults to `info@codestream.co.za` |
 | `CONTACT_FROM` | No | Defaults to `CodeStream Website <noreply@codestream.co.za>` — domain must be verified in Resend |
+
+Checklist:
+
+1. Add `RESEND_API_KEY` as a **Secret** (not a plain text var).
+2. Enable it for **Preview** and **Production** (preview URLs like `feat-redesign001.*.pages.dev` use Preview).
+3. Save, then **Retry deployment** or push a commit — existing deploys do not pick up new secrets until redeployed.
+4. Confirm in the deploy that Functions were uploaded (`Found Functions directory at /functions`).
 
 ### Deploy notes
 
